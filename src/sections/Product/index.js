@@ -1,4 +1,4 @@
-import { useState } from "react"
+// import { useState } from "react"
 import ColorSquare from "./components/ColorSquare"
 
 function ProductSection() {
