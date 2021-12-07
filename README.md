@@ -70,7 +70,7 @@ The `handleSubmit` should output something like this:
 
 ### The `Product` form should have:
 
-- An `ColorSquare` that changes with the color selection
+- An `ColorSquare` that changesiz
 - Inputs should either have a `value` or `checked` attribute
 
 This form you will write code to handle the inputs.

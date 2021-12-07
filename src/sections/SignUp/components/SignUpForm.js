@@ -10,14 +10,14 @@ const SignUpForm = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
-        const data = {
+        const userData = {
             firstName: nameInput,
             email: emailInput,
             password: passwordInput,
             terms: termInput 
         }
 
-        console.log(data);
+        console.log({userData});
         setNameInput('');
         setEmailInput('');
         setPasswordInput('');
