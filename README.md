@@ -109,16 +109,6 @@ The `handleSubmit` should output something like this:
 }
 ```
 
-The `Adivce` slip section should render:
-
-- A single random advice slip
-- A list of favourtie advice slips
-
-The `Advice` slip section should allow users to:
-
-- Fetch another advice slip using a button
-- Save and advice slip to favourites using a button
-
 Use a `console.log` in your `handleSubmit` function to view submissions.
 
 ```
