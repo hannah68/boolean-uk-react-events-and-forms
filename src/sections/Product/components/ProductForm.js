@@ -1,76 +1,56 @@
 import React from 'react'
-import { useState } from "react"
 import ColorSquare from "./ColorSquare"
 
-// one way of doing state==================================
-const ProductForm = () => {
-    const [updateForm, setUpdateForm] = useState({
-        size: "",
-        color: "",
-        quantity: 0,
-    });
-    
-    const changeInputHandler = (e) => {
-        const name = e.target.name;
-        const type = e.target.type;
-        const id = e.target.id;
+const ProductForm = (props) => {
+    const {productData, setProductData} = props;
 
-        if(type === 'radio' && name === 'size'){
-            setUpdateForm({...updateForm, size: e.target.value})
-        }
-        if(id === 'color'){
-            setUpdateForm({...updateForm, color: e.target.value})
-        }
-        if(name === 'quantity'){
-            setUpdateForm({...updateForm, quantity: e.target.value})
+    const changeHandler = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        const checked= e.target.checked;
+        if(name === 'size' && checked){
+            setProductData({...productData, [name]: value})
+        }else{
+            setProductData({...productData, [name]: value})
         }
     }
 
     const submitHandler = (e) => {
         e.preventDefault();
-        const productData = {
-            size : updateForm.size,
-            color: updateForm.color,
-            quantity: updateForm.quantity
-        }
         console.log({productData});
     }
-    
+
+  
     return (
         <form className="form-stack" onSubmit={submitHandler}>
             <label>Size</label>
-
             <input 
                 type="radio" 
                 id="size-sm" 
                 name="size" 
-                value= "small"
-                onChange={changeInputHandler}
-                />
+                value="small" 
+                onChange={changeHandler}
+            />
             <label htmlFor="size-sm">S</label>
             <input 
                 type="radio" 
                 id="size-md" 
                 name="size" 
-                value= "medium"
-                onChange={changeInputHandler}
-                />
+                value="medium"
+                onChange={changeHandler} 
+            />
             <label htmlFor="size-md">M</label>
             <input 
                 type="radio" 
                 id="size-lg" 
                 name="size" 
-                value= "large"
-                onChange={changeInputHandler}
-                />
+                value="large" 
+                onChange={changeHandler}
+            />
             <label htmlFor="size-lg">L</label>
-            <label htmlFor="size">Color</label>
+            <label htmlFor="color">Color</label>
             <ColorSquare />
-
-            <select 
-                id="color" 
-                onChange={changeInputHandler}
-            >
+            <select id="color" name="color" onChange={changeHandler} >
                 <option value="">Please Select a Color...</option>
                 <option value="white">White</option>
                 <option value="black">Black</option>
@@ -79,18 +59,108 @@ const ProductForm = () => {
                 <option value="green">Green</option>
             </select>
             <label htmlFor="quantity">Quantity</label>
-                <input 
+            <input 
                 type="number" 
                 id="quantity" 
-                name="quantity" 
-                onChange={changeInputHandler}
-                />
+                name="quantity"
+                onChange={changeHandler}
+            />
             <button type="submit">Buy</button>
-      </form>
+        </form>
     )
 }
 
 export default ProductForm
+
+// one way of doing state==================================
+// const ProductForm = () => {
+//     const [updateForm, setUpdateForm] = useState({
+//         size: "",
+//         color: "",
+//         quantity: 0,
+//     });
+    
+//     const changeInputHandler = (e) => {
+//         const name = e.target.name;
+//         const type = e.target.type;
+//         const id = e.target.id;
+
+//         if(type === 'radio' && name === 'size'){
+//             setUpdateForm({...updateForm, size: e.target.value})
+//         }
+//         if(id === 'color'){
+//             setUpdateForm({...updateForm, color: e.target.value})
+//         }
+//         if(name === 'quantity'){
+//             setUpdateForm({...updateForm, quantity: e.target.value})
+//         }
+//     }
+
+//     const submitHandler = (e) => {
+//         e.preventDefault();
+//         const productData = {
+//             size : updateForm.size,
+//             color: updateForm.color,
+//             quantity: updateForm.quantity
+//         }
+//         console.log({productData});
+//     }
+    
+//     return (
+//         <form className="form-stack" onSubmit={submitHandler}>
+//             <label>Size</label>
+
+//             <input 
+//                 type="radio" 
+//                 id="size-sm" 
+//                 name="size" 
+//                 value= "small"
+//                 onChange={changeInputHandler}
+//                 />
+//             <label htmlFor="size-sm">S</label>
+//             <input 
+//                 type="radio" 
+//                 id="size-md" 
+//                 name="size" 
+//                 value= "medium"
+//                 onChange={changeInputHandler}
+//                 />
+//             <label htmlFor="size-md">M</label>
+//             <input 
+//                 type="radio" 
+//                 id="size-lg" 
+//                 name="size" 
+//                 value= "large"
+//                 onChange={changeInputHandler}
+//                 />
+//             <label htmlFor="size-lg">L</label>
+//             <label htmlFor="size">Color</label>
+//             <ColorSquare />
+
+//             <select 
+//                 id="color" 
+//                 onChange={changeInputHandler}
+//             >
+//                 <option value="">Please Select a Color...</option>
+//                 <option value="white">White</option>
+//                 <option value="black">Black</option>
+//                 <option value="red">Red</option>
+//                 <option value="blue">Blue</option>
+//                 <option value="green">Green</option>
+//             </select>
+//             <label htmlFor="quantity">Quantity</label>
+//                 <input 
+//                 type="number" 
+//                 id="quantity" 
+//                 name="quantity" 
+//                 onChange={changeInputHandler}
+//                 />
+//             <button type="submit">Buy</button>
+//       </form>
+//     )
+// }
+
+// export default ProductForm
 
 
 
@@ -175,5 +245,3 @@ export default ProductForm
 //       </form>
 //     )
 // }
-
-// export default ProductForm

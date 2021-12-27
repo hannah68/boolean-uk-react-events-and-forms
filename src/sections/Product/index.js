@@ -1,11 +1,17 @@
-import ProductInfo from "./components/ProductInfo"
+import { useState } from "react"
 import ProductForm from "./components/ProductForm"
+import ProductInfo from "./components/ProductInfo"
 
-function ProductSection() {
+const ProductSection = () =>{
+  const [productData, setProductData] = useState({
+    size: "",
+    color: "",
+    quantity: null,
+  })
   return (
     <section className="shadow pad-lg">
       <ProductInfo/>
-      <ProductForm/>
+      <ProductForm productData={productData} setProductData={setProductData}/>
     </section>
   )
 }
